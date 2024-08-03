@@ -24,7 +24,7 @@ document.getElementById('form-cadastro').addEventListener('submit', function (ev
         return response.json();
     })
     .then(data => {
-        document.getElementById("resultado").textContent = "Você foi cadastrado com sucesso!";
+        document.getElementById("resultado").textContent = "Você foi cadastrado com sucesso! Vá para a aba de Login";
         })
     .catch(error => {
         console.error('Erro:', error);

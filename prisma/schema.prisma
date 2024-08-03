@@ -32,4 +32,5 @@ model tb_USUARIOS {
   id             Int    @id @default(autoincrement())
   nome String
   email String
+  logado Boolean    @default(false)
 }

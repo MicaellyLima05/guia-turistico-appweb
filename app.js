@@ -64,6 +64,44 @@ app.get('/usuarios', async (req,res) => {
     res.status(200).json(usuarios);
 }) 
 
+//rota de verificação para login dos usuários
+
+app.get('/login.html/usuarios/login', async (req,res) => {
+
+    const usuarios = await prisma.tb_USUARIOS.findMany();
+    
+
+    function buscaId (nome) {
+
+        const indice = usuarios.findIndex((usuario) => usuario.nome === nome);
+        return indice;
+    };
+
+    const idUsuario = buscaId(req.query.nome);
+
+    const usuarioLogin = await prisma.tb_USUARIOS.findUnique({
+        where: {
+            id: usuarios[idUsuario].id
+        }
+    });
+
+    if (usuarioLogin && usuarioLogin.email === req.query.email) {
+        await prisma.tb_USUARIOS.update({
+            where: {
+                id: usuarioLogin.id
+            },
+
+            data: {
+                logado: true,
+            }
+        })
+        res.status(200).json( {message: "Usuário já está cadastrado e logado."} );
+    } else {
+        res.status(404).json( {message: "Usuário não cadastrado."} );
+    }
+    
+}) 
+
 //rota para deletar um usuário
 
 app.delete('/usuarios', async (req,res) => {
