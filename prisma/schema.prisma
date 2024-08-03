@@ -27,3 +27,9 @@ model tb_PALAVRAS_BUSCA {
   palavras_chave String
 
 }
+
+model tb_USUARIOS {
+  id             Int    @id @default(autoincrement())
+  nome String
+  email String
+}

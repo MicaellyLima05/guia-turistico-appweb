@@ -1,8 +1,8 @@
-import express from "express"
+import app from "./app.js";
 
-const app = express()
-app.use(express.json())
+const PORT = 3001;
 
-app.listen(3000)
-
-export default app;
+//servidor escutando
+app.listen(PORT, () => {
+    console.log("Servidor escutando!");
+});
