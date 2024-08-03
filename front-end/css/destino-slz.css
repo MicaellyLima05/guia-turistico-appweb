@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Suez+One&display=swap');
+
+:root {
+    --cor-1: #ffffff;
+    --cor-2: #000000;
+    --cor-3: #E9F4FF;
+    --cor-4: #252478;
+    --cor-5: #B22334;
+}
+
+/* Página 2 - DESTINO - SLZ - */
+
+.tela_destino_slz_titulo {
+    display: flex;
+    justify-content: center;
+    font-family: "Suez One", serif; 
+    font-weight: 800;
+    font-size: 4rem;
+    letter-spacing: 5px;
+    padding: 5% 1%;
+}
+
+.tela_destino_slz_mapa_des {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5%;
+}
+
+.tela_destino_slz_mapa {
+    margin-left: 5%;
+}
+
+.tela_destino_slz_des {
+    margin-right: 5%;
+    margin-left: 8%;
+    padding-top: 3%;
+    height: 15.5rem;
+    border-top: 3px solid var(--cor-2);
+    border-bottom: 3px solid var(--cor-2);
+    font-family: "Suez One", serif;
+    font-size: 1.25rem;
+    text-align: justify;
+}
+
+.tela_destino_slz_links {
+    margin-bottom: 5%;
+    display: flex;
+    justify-content: center;
+}
+
+.tela_destino_slz_links {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+}
+
+.tela_destino_slz_link1, .tela_destino_slz_link2, .tela_destino_slz_link3{
+    text-decoration: none;
+    background-color: var(--cor-4);
+    border-radius: 1rem;
+    padding: 1%;
+    font-family: "Suez One", serif; 
+    font-size: 1.5rem;
+    color: var(--cor-2);
+}

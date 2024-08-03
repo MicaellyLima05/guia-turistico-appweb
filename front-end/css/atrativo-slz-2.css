@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Suez+One&display=swap');
+
+:root {
+    --cor-1: #ffffff;
+    --cor-2: #000000;
+    --cor-3: #E9F4FF;
+    --cor-4: #252478;
+    --cor-5: #B22334;
+}
+
+/* Página 3 - ATRATIVO - SLZ - TEATRO ARTHUR AZEVEDO - */
+
+.imagem_atrativo {
+    border-bottom: 4px solid var(--cor-2);
+}
+
+.tela_atrativo_slz_ta_titulo {
+    display: flex;
+    justify-content: center;
+    font-family: "Suez One", serif; 
+    font-weight: 800;
+    font-size: 4rem;
+    letter-spacing: 5px;
+    padding: 5% 1%;
+}
+
+.tela_atrativo_slz_ta_cat_des {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5%;
+    align-items: center;
+}
+
+.tela_atrativo_slz_ta_cat {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-left: 10%;
+    width: 100%;
+}
+
+.tela_atrativo_slz_ta_cat_tipo {
+    font-family: "Suez One", serif;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.tela_atrativo_slz_ta_cat_dis, .tela_atrativo_slz_ta_cat_tx{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    font-family: "Suez One", serif;
+    font-size: 1.25rem;
+}
+
+.tela_atrativo_slz_ta_des {
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 100%;
+    font-family: "Suez One", serif;
+    font-size: 1.25rem;
+    text-align: justify;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border-top: 3px solid var(--cor-2);
+    border-bottom: 3px solid var(--cor-2);
+}

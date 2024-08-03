@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model tb_ATRATIVOS {
+  id                       Int    @id @default(autoincrement())
+  nome_atrativo            String
+  descricao_atrativo       String
+  tipo_atrativo            String
+  disponibilidade_atrativo String
+  taxas_atrativo           String
+}
+
+model tb_DESTINOS {
+  id                Int    @id @default(autoincrement())
+  nome_destino      String
+  descricao_destino String
+}
+
+model tb_PALAVRAS_BUSCA {
+  id             Int    @id @default(autoincrement())
+  palavras_chave String
+
+}

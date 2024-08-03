@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Suez+One&display=swap');
+
+:root {
+    --cor-1: #ffffff;
+    --cor-2: #000000;
+    --cor-3: #E9F4FF;
+    --cor-4: #252478;
+    --cor-5: #B22334;
+}
+
+/* Todas as páginas - Cabeçalho*/
+
+.cabecalho {
+    padding:1% 1% 1% 1%;
+    background-color: var(--cor-1);
+    border-bottom: 4px solid var(--cor-2);
+}
+
+.cabecalho__menu {
+    width: 100%;
+}
+
+.cabecalho__menu__imagem {
+    width: 20%;
+    padding: 1% 1% 1% 8%;
+}
+
+.menu__botao {
+    display: none;
+}
+    
+.cabecalho__menu__lista {
+    list-style-type: none;
+    display: flex !important;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 4rem;
+    width: 80%;
+}
+
+.cabecalho__menu__lista1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    font-family: "Suez One", serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+
+.cabecalho__menu__lista2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;  
+    gap: 4rem;
+    width: 80%;
+    font-family: "Suez One", serif;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.cabecalho__menu__link1, .cabecalho__menu__link2, .cabecalho__menu__link3, .cabecalho__menu__link4 {
+    color: var(--cor-2);
+    text-decoration: none;
+}
+
+
+.cabecalho__menu__link2:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 20%;
+}
+
+.cabecalho__menu__link3:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 20%;
+}
+
+.cabecalho__menu__link4:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 20%;
+}
+
+/* Slides - Tela Inicial */
+
+.slider {
+    position: relative;
+    max-width: 1350px;
+    margin: auto;
+    overflow: hidden;
+    border-bottom: 4px solid var(--cor-2);
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.slide {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.slide img {
+    width: 100%;
+    display: block;
+}
+
+
+/* Todas as páginas - Rodapé*/
+.rodape {
+    background-color: var(--cor-4);
+    padding:2% 1% 2% 1%;
+    border-top: 4px solid var(--cor-2);
+}
+
+.rodape_itens {
+    display: flex;
+    flex-direction:row;
+    gap: 5px;
+}
+
+.rodape_itens_localizacao {
+    width: 40%;
+    padding: 0.5% 1% 1% 3%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    font-family: "Suez One", serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.rodape_itens_localizacao_texto {
+    color: var(--cor-2);
+    text-decoration: none;
+    font-family: "Suez One", serif;
+}
+
+.rodape_itens_localizacao_texto:hover {
+    color: var(--cor-1);
+
+}
+
+.rodape_itens_localizacao_img {
+    width: 15%;
+}
+
+.rodape_itens_texto1 {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1rem;
+    font-family: "Suez One", serif;
+}
+
+.rodape_itens_texto1_p2 {
+    color: var(--cor-2);
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-weight: 600;
+    font-family: "Suez One", serif;
+}
+
+
+.rodape_itens_texto1_p2:hover {
+    color: var(--cor-1);
+    font-weight: 800;
+}
+
+.rodape_itens_texto2 {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1rem;
+    font-family: "Suez One", serif;
+}
+
+.rodape_itens_texto2_partes {
+    display: flex;
+    flex-direction: row;
+    gap: 3px;
+}
+
+.rodape_itens_texto2_p2 {
+    color: var(--cor-2);
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-weight: 600;
+    font-family: "Suez One", serif;
+}
+
+
+.rodape_itens_texto2_p2:hover {
+    color: var(--cor-1);
+    font-weight: 800;
+}
+
+.rodape_itens_img {
+    width: 8%;
+    padding: 1% 3% 1% 1%;
+}

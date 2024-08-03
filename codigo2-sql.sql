@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS tb_PALAVRAS_BUSCA (
+	palavras_chave VARCHAR(200) NOT NULL
+);
+
+INSERT INTO tb_PALAVRAS_BUSCA (palavras_chave) SELECT nome_atrativo FROM tb_ATRATIVOS;
+
+INSERT INTO tb_PALAVRAS_BUSCA (palavras_chave) SELECT nome_destino FROM tb_DESTINOS;
+
+
