@@ -2,9 +2,21 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
+import cors from "cors";
+
 import express from "express";
 
 const app = express();
+
+const corsOptions = {
+    origin: 'https://front-end-appweb.vercel.app', //url de onde ta o front
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+    allowedHeaders: ['Content-Type'], 
+};
+
+app.use(cors(corsOptions));
+
+
 
 app.use(express.json());
 
@@ -13,7 +25,7 @@ app.use(express.json());
 
 const usuarios = [];
 
-app.post('/usuarios/cadastro', async (req,res) => {
+app.post('/cadastro.html/usuarios/cadastro', async (req,res) => {
     
     await prisma.tb_USUARIOS.create({
         data: {
@@ -22,7 +34,7 @@ app.post('/usuarios/cadastro', async (req,res) => {
         }
     })
 
-    res.status(201).json(req.body);
+    res.status(201).json( {message: "Usuario criado com sucessso"} );
 })
 
 

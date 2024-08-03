@@ -27,11 +27,18 @@
     </header>
 
     <main class="tela_cadastro">
-        <form action="http://localhost:3001/usuarios/cadastro" method="post">
-            <input type="nome" id="nome" placeholder="Qual é seu nome?"/>
-            <input type="email" id="email" placeholder="Insira seu email"/>
-            <input type="submit" value="cadastrar"/>
+        <h1>Cadastre-se aqui</h1>
+        
+        <form id="form-cadastro">
+            <label for="nome">Seu NOME aqui: </label>
+            <input type="text" id="nome" name="nome" required>
+            <br>
+            <label for="email">Seu E-mail aqui: </label>
+            <input type="email" id="email" name="email" required>
+            <br>
+            <button type="submit" id="fetchPOST">Me Cadastrar</button>
         </form>
+        <pre id="resultado"></pre>
     </main>
 
     <footer class="rodape">
@@ -57,5 +64,6 @@
     </footer>
 
     <script src="js/script.js"></script>
+    <script src="js/fetchPOST.js"></script>
 </body>
 </html>
