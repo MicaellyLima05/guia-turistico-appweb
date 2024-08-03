@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Suez+One&display=swap');
+
+:root {
+    --cor-1: #ffffff;
+    --cor-2: #000000;
+    --cor-3: #E9F4FF;
+    --cor-4: #252478;
+    --cor-5: #B22334;
+}
+
+/* Página 4 - CADASTRO */
+
+
+
+#form-login {
+    border: 3px solid var(--cor-2);
+    border-radius: 10px;
+    padding: 2%;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-bottom: 5%;
+    background-color: var(--cor-4);
+}
+
+.tela_login_titulo {
+    display: flex;
+    justify-content: center;
+    font-family: "Suez One", serif; 
+    font-weight: 800;
+    font-size: 4rem;
+    letter-spacing: 5px;
+    padding: 2% 1%;
+}
+
+
+#nome, #email {
+    border: 3px solid var(--cor-2);
+    border-radius: 10px;
+    width: 45%;
+    margin-left: 26%;
+    padding: 1%;
+}
+
+.form_login_botao {
+    display: flex;
+    justify-content: center;
+    border: 3px solid var(--cor-2);
+    border-radius: 10px;
+    margin-left: 40%;
+    width: 20%;
+    padding: 1%;
+    font-family: "Suez One", serif; 
+    font-weight: 600;
+    font-size: 1rem;
+}

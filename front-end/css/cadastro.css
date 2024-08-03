@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Suez+One&display=swap');
+
+:root {
+    --cor-1: #ffffff;
+    --cor-2: #000000;
+    --cor-3: #E9F4FF;
+    --cor-4: #252478;
+    --cor-5: #B22334;
+}
+
+/* Página 4 - CADASTRO */
+
+
+
+.form-cadastro {
+    border: 3px solid var(--cor-2);
+    border-radius: 10px;
+    padding: 2%;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-bottom: 5%;
+    background-color: var(--cor-4);
+}
+
+.tela_cadastro_titulo {
+    display: flex;
+    justify-content: center;
+    font-family: "Suez One", serif; 
+    font-weight: 800;
+    font-size: 4rem;
+    letter-spacing: 5px;
+    padding: 2% 1%;
+}
+
+.container_nome, .container_email {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.form_cadastro_titulo_nome, .form_cadastro_titulo_email{
+    font-family: "Suez One", serif; 
+    font-weight: 400;
+    font-size: 2rem;
+    letter-spacing: 5px;
+}
+
+.form_cadastro_titulo_aviso {
+    display: flex;
+    justify-content: center;
+    font-family: "Suez One", serif; 
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    margin-left: 5%;
+    margin-right: 30%;
+}
+
+
+#nome, #email {
+    display: flex;
+    justify-content: center;
+    border: 3px solid var(--cor-2);
+    border-radius: 10px;
+    width: 35%;
+}
+
+.form_cadastro_botao {
+    display: flex;
+    justify-content: center;
+    border: 3px solid var(--cor-2);
+    border-radius: 10px;
+    margin-left: 40%;
+    width: 20%;
+    padding: 1%;
+    font-family: "Suez One", serif; 
+    font-weight: 600;
+    font-size: 1rem;
+}
