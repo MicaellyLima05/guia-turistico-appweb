@@ -23,14 +23,14 @@ model tb_DESTINOS {
 }
 
 model tb_PALAVRAS_BUSCA {
-  id             Int    @id @default(autoincrement())
-  palavras_chave String
-
+  id                 Int     @id @default(autoincrement())
+  palavras_chave     String
+  link_palavra_chave String?
 }
 
 model tb_USUARIOS {
-  id             Int    @id @default(autoincrement())
-  nome String
-  email String
-  logado Boolean    @default(false)
+  id     Int     @id @default(autoincrement())
+  nome   String
+  email  String
+  logado Boolean @default(false)
 }

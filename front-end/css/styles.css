@@ -35,7 +35,7 @@
     flex-direction: row;
     justify-content: flex-start;
     gap: 4rem;
-    width: 80%;
+    width: 100%;
 }
 
 .cabecalho__menu__lista1 {
@@ -78,6 +78,41 @@
 .cabecalho__menu__link4:hover {
     text-decoration: underline;
     text-decoration-thickness: 20%;
+}
+
+.cabecalho__menu__pesquisa {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-right: 5%;
+    padding-top: 1%;
+}
+
+.cabecalho__menu__pesquisa_1 {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+#busca, #btnBusca {
+    border: 2px solid var(--cor-2);
+    border-radius: 1rem;
+}
+
+#cabecalho__menu__pesquisa_2 {
+    display: none;
+    color: var(--cor-2);
+    font-family: "Suez One", serif;
+    font-weight: 400;
+    font-size: 1rem;
+    text-decoration: underline;
+
+}
+
+#link_resultado {
+    text-decoration: none;
+    color: var(--cor-2);
+    padding-top: 1%;
 }
 
 /* Slides - Tela Inicial */

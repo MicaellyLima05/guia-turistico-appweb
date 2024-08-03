@@ -9,7 +9,8 @@ import express from "express";
 const app = express();
 
 const corsOptions = {
-    origin: 'https://front-end-appweb.vercel.app', //url de onde ta o front
+    origin: 'https://front-end-appweb.vercel.app',
+    origin: 'http://127.0.0.1:5500', //url de onde ta o front
     methods: ['GET', 'POST', 'PUT', 'DELETE'], 
     allowedHeaders: ['Content-Type'], 
 };
@@ -21,10 +22,10 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 
-//rota de criação de novo usuário
-
 const usuarios = [];
+const listaPalavrasChave = [];
 
+//rota de criação de novo usuário
 app.post('/cadastro.html/usuarios/cadastro', async (req,res) => {
     
     await prisma.tb_USUARIOS.create({
@@ -59,7 +60,7 @@ app.put('/usuarios', async (req,res) => {
 
 app.get('/usuarios', async (req,res) => {
 
-    const usuarios = await prisma.tb_USUARIOS.findMany()
+    const usuarios = await prisma.tb_USUARIOS.findMany();
 
     res.status(200).json(usuarios);
 }) 
@@ -101,6 +102,33 @@ app.get('/login.html/usuarios/login', async (req,res) => {
     }
     
 }) 
+
+
+//rota para busca por palavras-chave
+app.get('/usuarios/busca', async (req,res) => {
+    try {
+        const palavraChave = req.query.palavraChave;
+
+        if (!palavraChave) {
+            return res.status(400).json({ message: "Parâmetro 'palavraChave' é necessário." });
+        }
+
+        const palavraBuscada = await prisma.tb_PALAVRAS_BUSCA.findFirst({
+            where: {
+                palavras_chave: palavraChave
+            }
+        });
+
+        if (palavraBuscada) {
+            res.status(200).json(palavraBuscada.link_palavra_chave);
+        } else {
+            res.status(404).json({ message: "Palavra-chave não encontrada." });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Erro interno do servidor." });
+    }
+});
 
 //rota para deletar um usuário
 
