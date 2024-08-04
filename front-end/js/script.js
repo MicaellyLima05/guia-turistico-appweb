@@ -1,37 +1,3 @@
-let currentIndex = 0;
-const intervalTime = 2000; // Tempo entre as transições em milissegundos
-
-function showSlide(index) {
-    const slides = document.querySelector('.slides');
-    const totalSlides = document.querySelectorAll('.slide').length;
-    if (index >= totalSlides) {
-        currentIndex = 0;
-    } else if (index < 0) {
-        currentIndex = totalSlides - 1;
-    } else {
-        currentIndex = index;
-    }
-    const offset = -currentIndex * 100;
-    slides.style.transform = `translateX(${offset}%)`;
-}
-
-function moveSlide(step) {
-    showSlide(currentIndex + step);
-}
-
-// Função para iniciar o auto-play
-function startAutoPlay() {
-    setInterval(() => {
-        moveSlide(1);
-    }, intervalTime);
-}
-
-// Inicialize o slider mostrando o primeiro slide e inicie o auto-play
-showSlide(currentIndex);
-startAutoPlay();
-
-
-
 //funcionalidade de busca
 
 document.getElementById("btnBusca").addEventListener("click", function () {
@@ -74,3 +40,145 @@ document.getElementById("btnBusca").addEventListener("click", function () {
 organizaURL(palavraChave);
 
 });
+
+//
+
+async function verificarLogin() {
+    const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
+
+    const url = new URL('http://localhost:3001/usuarios/login/status');
+    url.searchParams.append('nome', usuarioLogado.nome);
+
+    try {
+        const response = await fetch(url, {
+            method: 'GET', 
+            headers: {
+                'Content-Type': 'application/json', 
+
+            }});
+
+        if (!response.ok) {
+            throw new Error(`Erro: ${response.status}`);
+        }
+
+        const dados = await response.json();
+
+        if (dados.logado) {
+            console.log(usuarioLogado);
+            return usuarioLogado
+        } else {
+            console.log = "Usuário não está logado.";
+            localStorage.removeItem('usuarioLogado');
+            return null
+        }
+
+    } catch (error) {
+        console.error('Erro na requisição:', error);
+        console.log = "Erro ao verificar o status de login.";
+        return null
+    }
+}
+
+
+//funcionalidade de favoritar
+
+    async function favoritarAtrativo(idAtrativo) {
+
+        const usuario = await verificarLogin();
+
+        if (!usuario) {
+            return; 
+        } 
+
+        const url = 'http://localhost:3001/usuarios/favoritar';
+        const dados = {
+            nomeUsuario: usuario.nome,
+            idAtrativo: idAtrativo,
+            link: window.location.href 
+        };
+
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(dados)
+            });
+
+            if (!response.ok) {
+                throw new Error(`Erro: ${response.status}`);
+            }
+
+            const resultado = await response.json();
+            if (resultado.sucesso) {
+                // Atualizar o texto do botão para indicar que a atração foi favoritada
+                document.getElementById('favoritar-btn').textContent = "Favorito";
+            } else {
+                console.log("Erro ao favoritar a atração.");
+            }
+
+        } catch (error) {
+            console.error('Erro na requisição:', error);
+        }
+    }
+
+
+    // Verifica o status de login quando a página carregar
+    document.addEventListener('DOMContentLoaded', verificarLogin);
+
+    // Adicionar evento ao botão de favoritar
+    const botoes = document.querySelectorAll('.favoritar-btn');
+    botoes.forEach(botao => {
+        botao.addEventListener('click', (event) => {
+            const botaoClicado = event.target;
+            const atracaoId = Number(botaoClicado.getAttribute('data-id'));
+
+        favoritarAtrativo(atracaoId);
+    });
+        
+    })
+
+    
+
+//funcionalidade de exibir os favoritos
+
+async function exibeFavorito() {
+
+    const usuario = await verificarLogin();
+
+    if (!usuario) {
+        return; 
+    } 
+
+    const dados = {
+        nomeUsuario: usuario.nome,
+    };
+
+    const url = new URL('http://localhost:3001/favoritos.html/usuarios/favoritos');
+    url.searchParams.append('nomeUsuario', dados.nomeUsuario);
+
+    try {
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error(`Erro: ${response.status}`);
+        }
+
+        const resultado = await response.json();
+        if (resultado.sucesso) {
+            // Atualizar o texto do botão para indicar que a atração foi favoritada
+            document.getElementById('favoritar-btn').textContent = "Favorito";
+        } else {
+            console.log("Erro ao favoritar a atração.");
+        }
+
+    } catch (error) {
+        console.error('Erro na requisição:', error);
+    }
+}

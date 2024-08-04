@@ -9,8 +9,7 @@ import express from "express";
 const app = express();
 
 const corsOptions = {
-    origin: 'https://front-end-appweb.vercel.app',
-    origin: 'http://127.0.0.1:5500', //url de onde ta o front
+    origin: '*', //url de onde ta o front
     methods: ['GET', 'POST', 'PUT', 'DELETE'], 
     allowedHeaders: ['Content-Type'], 
 };
@@ -94,13 +93,72 @@ app.get('/login.html/usuarios/login', async (req,res) => {
                 logado: true,
             }
         })
-        res.status(200).json( {message: "Usuário já está cadastrado e logado."} );
+        res.status(200).json( {message: "Usuário já está cadastrado e logado.", logado: true});
     } else {
         res.status(404).json( {message: "Usuário não cadastrado."} );
     }
     
 }) 
 
+
+//rota para logout dos usuários
+
+app.post('/usuarios/logout', async (req,res) => {
+
+    const usuarios = await prisma.tb_USUARIOS.findMany();
+    
+    function buscaId (nome) {
+
+        const indice = usuarios.findIndex((usuario) => usuario.nome === nome);
+        return indice;
+    };
+
+    const idUsuario = buscaId(req.body.nome);
+
+    const usuarioLogin = await prisma.tb_USUARIOS.findUnique({
+        where: {
+            id: usuarios[idUsuario].id
+        }
+    });
+
+    if (usuarioLogin && usuarioLogin.email === req.body.email) {
+        await prisma.tb_USUARIOS.update({
+            where: {
+                id: usuarioLogin.id
+            },
+
+            data: {
+                logado: false,
+            }
+        })
+        res.status(200).json( {message: "Usuário está deslogado."} );
+    } else {
+        res.status(400).json( {message: "Usuário ainda está logado."} );
+    }
+    
+})
+
+//rota para verificar status de login do usuário
+app.get('/usuarios/login/status', async (req, res) => {
+    const { nome } = req.query;
+
+    try {
+        const usuario = await prisma.tb_USUARIOS.findUnique({
+            where: { nome: nome }
+        });
+
+        if (!usuario) {
+            return res.status(404).json({ message: "Usuário não encontrado." });
+        }
+
+        res.status(200).json({
+            logado: usuario.logado
+        });
+    } catch (error) {
+        console.error('Erro ao verificar status de login:', error);
+        res.status(500).json({ message: "Erro ao verificar status de login." });
+    }
+});
 
 //rota para função de busca por palavras-chave
 app.get('/usuarios/busca', async (req,res) => {
@@ -127,6 +185,32 @@ app.get('/usuarios/busca', async (req,res) => {
         res.status(500).json({ message: "Erro interno do servidor." });
     }
 });
+
+//rota para favoritar uma atração
+app.post('/usuarios/favoritar', async (req, res) => {
+    const { nomeUsuario, idAtrativo, link } = req.body;
+
+    if (!nomeUsuario || !idAtrativo || !link) {
+        return res.status(400).json({ mensagem: "Dados insuficientes." });
+    }
+
+    try {
+        // Adiciona um registro na tabela favoritos
+        await prisma.tb_FAVORITOS.create({
+            data: {
+                usuarioNome: nomeUsuario,
+                atracaoId: idAtrativo,
+                link: link
+            }
+        });
+
+        res.status(200).json({ sucesso: true });
+    } catch (error) {
+        console.error('Erro ao favoritar:', error);
+        res.status(500).json({ sucesso: false, mensagem: "Erro ao favoritar a atração." });
+    }
+});
+
 
 //rota para deletar um usuário
 

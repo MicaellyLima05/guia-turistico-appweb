@@ -1,3 +1,4 @@
+//fetch para login
 document.getElementById('form-login').addEventListener('submit', function (evento) {
     evento.preventDefault();
 
@@ -31,13 +32,17 @@ document.getElementById('form-login').addEventListener('submit', function (event
 
         const dados = await response.json();
 
-        document.getElementById("resultado").textContent = "Você está logado.";
+        if (dados.logado) {
+            document.getElementById("resultado").textContent = "Você está logado.";
+            localStorage.setItem('usuarioLogado', JSON.stringify({ nome: nome }));
+        } else {
+            document.getElementById("resultado").textContent = "Erro";
+        }
 
     } catch (error) {
         console.error('Erro na requisição:', error);
     }
 }
-
 
 organizaURL( nome, email);
 

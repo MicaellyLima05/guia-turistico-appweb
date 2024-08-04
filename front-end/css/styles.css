@@ -59,7 +59,7 @@
     font-size: 1rem;
 }
 
-.cabecalho__menu__link1, .cabecalho__menu__link2, .cabecalho__menu__link3, .cabecalho__menu__link4 {
+.cabecalho__menu__link1, .cabecalho__menu__link2, .cabecalho__menu__link3, .cabecalho__menu__link4, .cabecalho__menu__link5 {
     color: var(--cor-2);
     text-decoration: none;
 }
@@ -76,6 +76,11 @@
 }
 
 .cabecalho__menu__link4:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 20%;
+}
+
+.cabecalho__menu__link5:hover {
     text-decoration: underline;
     text-decoration-thickness: 20%;
 }

@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta bvarset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MaraTour - Seu guia do Maranhão</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/atrativo-cax-1.css">
-    <link rel="stylesheet" href="css/favoritar.css">
+    <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
     <header class="cabecalho">
@@ -34,33 +33,24 @@
                     </div>
                     <pre class="resultado" id="resultado"></pre>
                 </div>
+                
             </div>
         </nav>
     </header>
 
-    <main class="tela_atrativo_bar_bv">
-        <img class="imagem_atrativo" src="imagens/balneario-veneza.jpg" alt="Imagem Balneário Veneza" width="1335px" height="500px">
-        <div class="container-botao">
-            <h1 class="tela_atrativo_bar_bv_titulo">Balneário Veneza</h1> 
-            <button class="favoritar-btn" data-id="4">Favoritar</button>
-        </div>
-       
-        <div class="tela_atrativo_bar_bv_cat_des">
-            <div class="tela_atrativo_bar_bv_cat">
-                <div >
-                    <p class="tela_atrativo_bar_bv_cat_tipo">Parque Ambiental</p>
-                </div>
-                <div class="tela_atrativo_bar_bv_cat_dis">
-                    <img src="imagens/4-removebg-preview.png" alt="Icone Horas" width="50px">
-                    <p>Aberto todos os dias. 08h até 18h</p>
-                </div>
-                <div class="tela_atrativo_bar_bv_cat_tx">
-                    <img src="imagens/5-removebg-preview.png" alt="Icone dinheiro" width="80px">
-                    <p>Entrada Gratuita</p>
-                </div>
-            </div>
-            <p class="tela_atrativo_bar_bv_des">O Balneário Veneza é conhecido por seu lago, o qual, segundo alguns estudos, possui uma lama negra com efeitos medicinais devido seu alto teor de enxofre, podendo ser usada no tratamento de doenças da pele. Além disso, os espaço conta com mesas, bares e restaurantes, pedalinho, entre outras coisas.</p>
-        </div>
+    <main class="tela_login">
+        <h1 class="tela_login_titulo">LOGOUT</h1>
+        
+        <form id="form-logout">
+            <input type="text" id="nome" name="nome" placeholder="Nome" required>
+            <br>
+            <br>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+            <br>
+            <br>
+            <button class="form_login_botao" type="submit" id="fetchPOST">LOGOUT</button>
+        </form>
+        <pre class="resultado" id="resultado"></pre>
     </main>
 
     <footer class="rodape">
@@ -76,8 +66,8 @@
             <div class="rodape_itens_texto2">
                 <h2 class="rodape_itens_texto2_p1">Em parceria com</h2>
                 <div class="rodape_itens_texto2_partes">
-                    <a class="rodape_itens_texto2_p2" href="https://www.alura.com.bv/">Alura &</a>
-                    <a class="rodape_itens_texto2_p2" href="https://www.inova.ma.gov.bv/trilhas">Trilhas Inova</a>
+                    <a class="rodape_itens_texto2_p2" href="https://www.alura.com.br/">Alura &</a>
+                    <a class="rodape_itens_texto2_p2" href="https://www.inova.ma.gov.br/trilhas">Trilhas Inova</a>
                 </div>
                 
             </div>
@@ -85,6 +75,7 @@
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script src="js/script-cadastro-login.js"></script>
+    <script src="js/fetchPOST-logout.js"></script>
 </body>
 </html>

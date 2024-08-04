@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Suez+One&display=swap');
+
+:root {
+    --cor-1: #ffffff;
+    --cor-2: #000000;
+    --cor-3: #E9F4FF;
+    --cor-4: #252478;
+    --cor-5: #B22334;
+}
+
+/* Página 3 - ATRATIVO - BAR - PARQUE DUNAS- */
+
+.favoritar-btn {
+    border: 2px solid var(--cor-2);
+    border-radius: 1rem;
+    padding: 0.5%;
+    height: 2rem;
+    background-color: var(--cor-5);
+}
+
+.container-botao {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+   
+}

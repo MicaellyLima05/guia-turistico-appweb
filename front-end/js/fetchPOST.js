@@ -1,3 +1,4 @@
+//fetch para cadastro
 document.getElementById('form-cadastro').addEventListener('submit', function (evento) {
     evento.preventDefault();
 

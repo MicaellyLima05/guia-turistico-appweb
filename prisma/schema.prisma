@@ -30,7 +30,14 @@ model tb_PALAVRAS_BUSCA {
 
 model tb_USUARIOS {
   id     Int     @id @default(autoincrement())
-  nome   String
+  nome   String  @unique
   email  String
   logado Boolean @default(false)
+}
+
+model tb_FAVORITOS {
+  id          Int     @id @default(autoincrement())
+  usuarioNome String? 
+  atracaoId   Int?
+  link        String?
 }
