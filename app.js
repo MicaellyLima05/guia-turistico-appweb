@@ -17,15 +17,13 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-
-
 app.use(express.json());
 
 
 const usuarios = [];
 const listaPalavrasChave = [];
 
-//rota de criação de novo usuário
+//rota de cadastro de novo usuário
 app.post('/cadastro.html/usuarios/cadastro', async (req,res) => {
     
     await prisma.tb_USUARIOS.create({
@@ -104,7 +102,7 @@ app.get('/login.html/usuarios/login', async (req,res) => {
 }) 
 
 
-//rota para busca por palavras-chave
+//rota para função de busca por palavras-chave
 app.get('/usuarios/busca', async (req,res) => {
     try {
         const palavraChave = req.query.palavraChave;
