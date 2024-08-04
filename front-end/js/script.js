@@ -32,7 +32,7 @@ document.getElementById("btnBusca").addEventListener("click", function () {
 
     } catch (error) {
         console.error('Erro na requisição:', error);
-        document.getElementById("resultado").textContent = 'Essa pesquisa é inválida. Tente usar letras maiúsculas, espaços e assentos de forma correta.';
+        document.getElementById("resultado").textContent = 'Essa pesquisa é inválida.\nTente usar letras maiúsculas, \nespaços e assentos de forma correta.';
     }
 }
 
@@ -113,7 +113,7 @@ async function verificarLogin() {
             const resultado = await response.json();
             if (resultado.sucesso) {
                 // Atualizar o texto do botão para indicar que a atração foi favoritada
-                document.getElementById('favoritar-btn').textContent = "Favorito";
+                alert("Esse atrativo foi adicionado no Meus Favoritos.");
             } else {
                 console.log("Erro ao favoritar a atração.");
             }
@@ -142,43 +142,47 @@ async function verificarLogin() {
     
 
 //funcionalidade de exibir os favoritos
+    document.addEventListener('DOMContentLoaded', async () => {
+        const usuario = await verificarLogin();
 
-async function exibeFavorito() {
-
-    const usuario = await verificarLogin();
-
-    if (!usuario) {
-        return; 
-    } 
-
-    const dados = {
-        nomeUsuario: usuario.nome,
-    };
-
-    const url = new URL('http://localhost:3001/favoritos.html/usuarios/favoritos');
-    url.searchParams.append('nomeUsuario', dados.nomeUsuario);
-
-    try {
-        const response = await fetch(url, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        });
-
-        if (!response.ok) {
-            throw new Error(`Erro: ${response.status}`);
+        if (!usuario) {
+            document.getElementById('mensagem').textContent = "Você não está logado.";
+            return;
         }
 
-        const resultado = await response.json();
-        if (resultado.sucesso) {
-            // Atualizar o texto do botão para indicar que a atração foi favoritada
-            document.getElementById('favoritar-btn').textContent = "Favorito";
-        } else {
-            console.log("Erro ao favoritar a atração.");
-        }
+        const url = new URL('http://localhost:3001/usuarios/favoritos');
+        url.searchParams.append('nomeUsuario', usuario.nome);
 
-    } catch (error) {
-        console.error('Erro na requisição:', error);
-    }
-}
+        try {
+            const response = await fetch(url, {
+                method: "GET",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error(`Erro: ${response.status} `);
+            }
+
+            const resultado = await response.json();
+            const listaFavoritos = document.getElementById("lista-favoritos");
+
+            if (resultado.favoritos.length > 0) {
+                resultado.favoritos.forEach(favorito => {
+                    const listItem = document.createElement('li');
+                    const link = document.createElement('a');
+                    link.href = favorito.link;
+                    link.textContent = "ATRATIVO";
+                    link.target = "_blank";
+                    listItem.appendChild(link);
+                    listaFavoritos.appendChild(listItem);
+                });
+            } else {
+                document.getElementById('mensagem').textContent = "Você não tem favoritos.";
+            }
+        } catch {
+            console.error('Erro na requisição:', error);
+            document.getElementById('mensagem').textContent = "Erro ao carregar os favoritos.";
+        }
+    });

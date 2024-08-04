@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta laarset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MaraTour - Seu guia do Maranhão</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/atrativo-bar-2.css">
-    <link rel="stylesheet" href="css/favoritar.css">
+    <link rel="stylesheet" href="css/tela-inicial.css">
+    <link rel="stylesheet" href="css/favoritos.css">
 </head>
 <body>
     <header class="cabecalho">
@@ -38,27 +38,11 @@
         </nav>
     </header>
 
-    <main class="tela_atrativo_bar_la">
-        <img class="imagem_atrativo" src="imagens/lagoa.jpg" alt="Imagem Lagoa Azul" width="1335px" height="500px">
-        <div class="container-botao"><h1 class="tela_atrativo_bar_la_titulo">Circuito Lagoa AZul</h1>
-            <button class="favoritar-btn" data-id="2">Favoritar</button></div>
-        
-        <div class="tela_atrativo_bar_la_cat_des">
-            <div class="tela_atrativo_bar_la_cat">
-                <div >
-                    <p class="tela_atrativo_bar_la_cat_tipo">Praia</p>
-                </div>
-                <div class="tela_atrativo_bar_la_cat_dis">
-                    <img src="imagens/4-removebg-preview.png" alt="Icone Horas" width="50px">
-                    <p>Aberto Todos os dias. Manhã ou Tarde</p>
-                </div>
-                <div class="tela_atrativo_bar_la_cat_tx">
-                    <img src="imagens/5-removebg-preview.png" alt="Icone dinheiro" width="80px">
-                    <p>Entrada Paga</p>
-                </div>
-            </div>
-            <p class="tela_atrativo_bar_la_des">O circuito da Lagoa Azul está entre os mais famosos dos Lençóis Maranhenses. O passeio parte de Barreirinhas e tem meio dia de duração. O passeio segue rumo à região onde está a Lagoa Azul. O passeio para a Lagoa Azul acontece sempre em veículo 4x4, com saída de Barreirinhas. O tempo de duração do passeio é de 4h30.</p>
-        </div>
+    <main class="tela_inicial">
+        <h1 class="tela_favoritos_titulo">Meus Favoritos</h1>
+        <p class="tela_favoritos_paragrafo">Você precisa estar logado <br> para acessar os seus favoritos.</p>
+        <div id="mensagem"></div>
+        <ul id="lista-favoritos"></ul>
     </main>
 
     <footer class="rodape">
@@ -74,8 +58,8 @@
             <div class="rodape_itens_texto2">
                 <h2 class="rodape_itens_texto2_p1">Em parceria com</h2>
                 <div class="rodape_itens_texto2_partes">
-                    <a class="rodape_itens_texto2_p2" href="https://www.alura.com.la/">Alura &</a>
-                    <a class="rodape_itens_texto2_p2" href="https://www.inova.ma.gov.la/trilhas">Trilhas Inova</a>
+                    <a class="rodape_itens_texto2_p2" href="https://www.alura.com.br/">Alura &</a>
+                    <a class="rodape_itens_texto2_p2" href="https://www.inova.ma.gov.br/trilhas">Trilhas Inova</a>
                 </div>
                 
             </div>
@@ -84,5 +68,6 @@
     </footer>
 
     <script src="js/script.js"></script>
+    <script src="js/fetchGET-status.js"></script>
 </body>
 </html>

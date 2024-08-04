@@ -23,11 +23,13 @@ document.getElementById('form-logout').addEventListener('submit', function (even
 
         if (!response.ok) {
             throw new Error(`Erro: ${response.status}`);
+        } else {
+
+            alert("Você não está mais logado.")
         }
 
         const dados = response.json();
 
-        document.getElementById("resultado").textContent = "Você está deslogado.";
 
     } catch (error) {
         console.error('Erro na requisição:', error);

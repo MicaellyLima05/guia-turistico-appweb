@@ -211,6 +211,28 @@ app.post('/usuarios/favoritar', async (req, res) => {
     }
 });
 
+//rota para favoritar uma atração
+app.get('/usuarios/favoritos', async (req, res) => {
+    const { nomeUsuario } = req.query;
+
+    if (!nomeUsuario) {
+        return res.status(400).json({ mensagem: "Nome de usúario não fornecido.." });
+    }
+
+    try {
+        
+        const favoritos = await prisma.tb_FAVORITOS.findMany({
+            where: { usuarioNome: nomeUsuario },
+            select: { link: true }
+        });
+
+        res.status(200).json({ favoritos });
+    } catch (error) {
+        console.error('Erro ao obter favoritos:', error);
+        res.status(500).json({ mensagem: "Erro ao obter favoritos." });
+    }
+});
+
 
 //rota para deletar um usuário
 
@@ -223,6 +245,19 @@ app.delete('/usuarios', async (req,res) => {
     })
 
     res.status(200).json({message: "Usuário deletado"})
+})
+
+//rota para deletar um favorito
+
+app.delete('/usuarios/favoritos', async (req,res) => {
+
+    await prisma.tb_FAVORITOS.delete({
+        where: {
+            id: req.body.id
+        }
+    })
+
+    res.status(200).json({message: "Favorito deletado"})
 })
 
 app.listen(3000);

@@ -33,7 +33,7 @@ document.getElementById('form-login').addEventListener('submit', function (event
         const dados = await response.json();
 
         if (dados.logado) {
-            document.getElementById("resultado").textContent = "Você está logado.";
+            alert("Você está logado agora.");
             localStorage.setItem('usuarioLogado', JSON.stringify({ nome: nome }));
         } else {
             document.getElementById("resultado").textContent = "Erro";
